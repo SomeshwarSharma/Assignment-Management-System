@@ -1,0 +1,73 @@
+Q1.Explain the use of Struts2 tiles framework with an example.
+Answer:
+1.We can customize the layout of the struts 2 application by integrating with tiles framework.
+2.A web page can contain many parts or tiles such as header, left pane, right pane, body part, footer etc. 
+3.It is very difficult to hard code this in each and every webpage and if later a change is needed than all the pages needs to be modified. Hence we use template like mechanism to overcome this difficulty. We create a common Header, Footer, Menu page and include this in each page.
+4.Tiles is a templating system used to maintain a consistent look and feel across all the web pages of a web application.
+5.Advantages of struts 2 tiles framework are:
+-We can customize the layout of all the pages by single page (centralized page) only.
+-A single part like header or footer can be used in many pages. So it saves coding and increases reusability.
+-If any tile is modified, we don't need to change many pages instead we need to make changes only in one page.
+-If any tile of the page is removed, we don't need to remove the code from all the pages. We can remove the tile from our layout manager page.
+6.Example:
+	a. define struts 2 listener in web.xml
+	<listener>  
+	<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>  
+	</listener>  
+	
+	b.create tiles.xml in web-inf
+	<?xml version="1.0" encoding="UTF-8" ?>   
+  
+	<!DOCTYPE tiles-definitions PUBLIC   
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"  
+	 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">   
+	  
+	<tiles-definitions>  
+		 
+	   <definition name="login-success" template="/layoutmanager.jsp">   
+	   <put-attribute name="title" value="Welcome Page"/>   
+	   <put-attribute name="body" value="/login-success.jsp"/>   
+	   </definition>  
+		 
+	   <definition name="login-error" template="/layoutmanager.jsp">   
+	   <put-attribute name="title" value="Login Error"/>   
+	   <put-attribute name="body" value="/login-error.jsp"/>   
+	   </definition>   
+		 
+	</tiles-definitions> 
+	
+	c.create layout manager page
+	<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>  
+	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+	"http://www.w3.org/TR/html4/loose.dtd">  
+	<html>  
+	<head>  
+	<title><tiles:getAsString name="title" /></title>  
+	</head>  
+	<body>  
+
+	<%@  include file="header.jsp" %>  
+	<tiles:insertAttribute name="body" />  
+	<%@ include file="footer.jsp" %>  
+
+	</body>  
+	</html>   
+	
+	d.create footer component
+	header.jsp
+	<h2 style="background-color:pink;text-align:center;">It is header tile</h2>  
+	<hr/>  
+	
+	footer.jsp
+	<hr>  
+	<h2 style="background-color:pink;text-align:center;">It is footer tile</h2>  
+	
+	login-success.jsp
+	<%@ taglib uri="/struts-tags" prefix="s" %>    
+	Welcome, <s:property value="name"/>  
+	</textrea></div>  
+	<hr/>  
+	<strong>login-error.jsp</strong>  
+	<div class="codeblock"><textarea name="code" class="xml" >  
+	Sorry, username or password error!  
+	<jsp:include page="index.jsp"></jsp:include>
