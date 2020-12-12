@@ -1,0 +1,6 @@
+# AMS
+Assignment Management System(AMS) is a system that aims at downloading and uploading online assignments for students; with each assignment having information about the instructions, description, deadline, and submission details.  The main goal of this thesis is to design and implement online assignment submission and provide an interface use for uploading test program by instructors, who would be able to evaluate assignments automatically. This project enables the students to submit their assignment online without submitting any physical file.
+ The proposed system helps reducing and minimizing human error, capable to assist supervisors(teachers and faculty) in the process by controlling and managing students. Moreover, the proposed system allows supervisors to share documents and files with their students. The most obvious advantage offered by online assignment submission is that it offers faster transmission of assignments than using traditional way by using online system. So it saves the time and cost for teachers by enabling them to put up a fast response for students as well as increasing the quality of the feedback provided to students.
+
+# first save the database file then try to run this project 
+ project.sql 
